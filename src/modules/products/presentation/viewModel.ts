@@ -1,8 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
 import { ProductType } from "../types/ProductType";
+import { ProductModel } from "../domain/models/ProductModel";
 import { GetProductsCase } from "../domain/usecases/getProducts";
-import {ProductModel} from "../domain/models/ProductModel";
 
 type UseCases = {
     getProductsCase: GetProductsCase;
@@ -25,14 +25,19 @@ export class ProductsViewModel {
         return this._isLoading;
     }
 
+    async changeProductType(value: ProductType) {
+        this._productType = value;
+
+        await this.getProducts();
+    }
+
     async getProducts() {
         this._isLoading = true;
 
         try {
             const response = await this.useCases.getProductsCase.getProducts(this._productType);
 
-            //TODO: remove as ProductModel[]
-            runInAction(() => this._products = response as ProductModel[]);
+            runInAction(() => this._products = response);
         } finally {
             runInAction(() => this._isLoading = false);
         }

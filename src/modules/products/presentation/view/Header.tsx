@@ -1,7 +1,11 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FC } from "react";
+
+import { ProductType } from "../../types/ProductType";
+import { ProductOption } from "../../types/ProductOption";
 
 interface Props {
-
+    options: ProductOption[],
+    onChangeFilter: (value: ProductType) => void,
 }
 
 const headerStyles = {
@@ -15,10 +19,18 @@ const headerStyles = {
 }
 
 const Header: FC<Props> = (props) => {
+    const changeProductFilter = (e: ChangeEvent<HTMLSelectElement>) => {
+        props.onChangeFilter(e.target.value as ProductType);
+    }
+
     return (
         <div style={headerStyles as React.CSSProperties}>
             <div>Фильтр по типу продукции</div>
-            <select/>
+            <select
+                onChange={changeProductFilter}
+            >
+                {props.options?.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+            </select>
         </div>
     )
 }

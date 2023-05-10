@@ -3,10 +3,13 @@ import React, { FC } from "react";
 import Header from "./Header";
 import ProductChart from "./ProductChart";
 import { IChartData } from "../interfaces/IChartData";
+import { ProductType } from "../../types/ProductType";
+import { ProductOption } from "../../types/ProductOption";
 
 interface Props {
     isLoading: boolean;
     data: IChartData;
+    changeProductType: (value: ProductType) => void,
 }
 
 const containerStyles = {
@@ -17,11 +20,20 @@ const containerStyles = {
 }
 
 const View: FC<Props> = (props) => {
-    const { isLoading, data } = props;
+    const { isLoading, data, changeProductType } = props;
+
+    const filterOptions: ProductOption[] = [
+        { value: ProductType.ALL, label: 'Все продукты' },
+        { value: ProductType.PRODUCT_1, label: 'Продукт 1' },
+        { value: ProductType.PRODUCT_2, label: 'Продукт 2' },
+    ];
 
     return (
         <div style={containerStyles as React.CSSProperties}>
-            <Header/>
+            <Header
+                options={filterOptions}
+                onChangeFilter={changeProductType}
+            />
             {
                 isLoading
                     ? <h4>Loading...</h4>

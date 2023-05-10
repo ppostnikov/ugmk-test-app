@@ -1,5 +1,6 @@
 import { Product } from "../types/Product";
 import { Api } from "../../../services/api/api";
+import { APIError } from "../../../utility/exceptions";
 
 interface IProductsRepository {
     getProducts(): Promise<Product[]>;
@@ -12,7 +13,7 @@ export class ProductRepositoryImpl implements IProductsRepository{
         try {
             return await this.api.getProducts();
         } catch (err) {
-            console.log('ERROR:', err);
+            throw new APIError();
         }
     }
 }

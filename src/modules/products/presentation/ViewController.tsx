@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 
 import View from "./view/View";
 import { ProductsViewModel } from "./viewModel";
+import { ProductType } from "../types/ProductType";
 import { getChartData } from "./utility/getChartsData";
 
 interface Props {
@@ -12,16 +13,20 @@ interface Props {
 const ViewController: FC<Props> = ({ viewModel }) => {
     useEffect( () => {
         (async () => {
-            try {
-                await viewModel.getProducts();
-            } catch (error) {
-                console.log('ERROR:', error);
-            }
+            await viewModel.getProducts();
         })();
     }, []);
 
+    const changeProductType = (value: ProductType) => {
+        viewModel.changeProductType(value);
+    }
+
     return (
-        <View isLoading={viewModel.isLoading} data={getChartData(viewModel.products)} />
+        <View
+            isLoading={viewModel.isLoading}
+            data={getChartData(viewModel.products)}
+            changeProductType={changeProductType}
+        />
     )
 }
 

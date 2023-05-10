@@ -1,19 +1,13 @@
-import { number, object, string } from 'yup';
+export class ProductModel {
+    id: number = 0;
+    factory_id: number = 0;
+    date: string = '';
+    value: number = 0;
 
-import { Model } from "../../../../utility/model";
-
-export class ProductModel extends Model {
-    id: number | null = null;
-    factory_id: number | null = null;
-    date: string | null = null;
-    value: number | null = null;
-
-    getSchema() {
-        return object().shape({
-            id: number(),
-            factory_id: number(),
-            date: string().nullable(),
-            value: number().nullable()
-        });
+    constructor(data: ProductModel) {
+        this.id = data.id;
+        this.factory_id = data.factory_id;
+        this.date = data.date;
+        this.value = data.value;
     }
 }
