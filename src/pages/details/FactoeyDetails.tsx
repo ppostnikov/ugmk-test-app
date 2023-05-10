@@ -1,11 +1,12 @@
 import React from "react";
+import { ErrorBoundary } from "react-error-boundary";
 
 import { Details } from "../../modules/details/presentation";
-import ErrorBoundary from "../../components/error/ErrorBoundary";
+import ErrorFallback from "../../components/error/ErrorFallback";
 
 const FactoryDetailsPage: React.FC = () => {
     return (
-        <ErrorBoundary>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
             <Details/>
         </ErrorBoundary>
     )

@@ -1,5 +1,4 @@
 import { IStorage } from "../storage/storage";
-import { APIError } from "../../utility/exceptions";
 import { ProductResponse } from "./types/ProductResponse";
 import { Product } from "../../modules/products/types/Product";
 import { getMonthFromDate } from "../../utility/getMonthFromDate";
@@ -31,16 +30,12 @@ export class Api implements IProductsApi {
         if (storageProducts) {
             return storageProducts;
         } else {
-            try {
-                const response = await fetch('http://localhost:3001/products ', { method: 'GET',});
-                const data = (await response.json())?.filter((product: ProductResponse) => product?.date !== null);
+            const response = await fetch('http://localhost:3002/products ', { method: 'GET',});
+            const data = (await response.json())?.filter((product: ProductResponse) => product?.date !== null);
 
-                this.storage.setData(storageKey, data);
+            this.storage.setData(storageKey, data);
 
-                return data;
-            } catch (e) {
-                throw new APIError();
-            }
+            return data;
         }
     }
 }
