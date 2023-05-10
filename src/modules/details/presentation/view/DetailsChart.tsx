@@ -11,8 +11,9 @@ interface Props {
 const chartStyles = {
     display: "flex",
     justifyContent: "center",
-    width: "80%",
     padding: "16px",
+    width: "auto",
+    minWidth: "720px",
 }
 
 const DetailsChart: FC<Props> = (props) => {
@@ -21,15 +22,6 @@ const DetailsChart: FC<Props> = (props) => {
     const chartOptions = {
         chart: {
             type: 'pie',
-        },
-        plotOptions: {
-            pie: {
-                dataLabels: {
-                    enabled: true,
-                    format: '{y}',
-                },
-                showInLegend: true
-            }
         },
         series: [{
             name: `Объем`,

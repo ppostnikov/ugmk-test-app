@@ -16,7 +16,21 @@ const baseOptions = {
         labelFormatter: function () {
             return '<span style="color: ' + this.color + '">' + this.name + '</span>';
         }
-    }
+    },
+    plotOptions: {
+        pie: {
+            dataLabels: {
+                enabled: true,
+                connectorWidth: 0,
+                formatter: function () {
+                    return (
+                        '<span style="color: ' + this.color + '">' + this.y + '</span>'
+                    );
+                }
+            },
+            showInLegend: true
+        }
+    },
 } as Highcharts.Options;
 
 const Chart: FC<HighchartsReact.Props> = (props) => {

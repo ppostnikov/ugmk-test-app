@@ -14,10 +14,11 @@ interface Props {
 const chartStyles = {
     display: "flex",
     justifyContent: "center",
-    width: "80%",
     border: "1px solid black",
     borderRadius: "12px",
     padding: "16px",
+    width: "auto",
+    minWidth: "720px",
 }
 
 const ProductChart: FC<Props> = (props) => {
@@ -40,6 +41,11 @@ const ProductChart: FC<Props> = (props) => {
             min: 0,
             max: 11,
             categories: MONTH_CATEGORIES,
+        },
+        yAxis: {
+            title: {
+                text: '',
+            },
         },
         series: [{
             name: `Фабрика ${factoryIdToFactoryName(1)}`,

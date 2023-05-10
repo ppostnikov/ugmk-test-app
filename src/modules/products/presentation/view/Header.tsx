@@ -9,7 +9,8 @@ interface Props {
 }
 
 const headerStyles = {
-    width: "80%",
+    width: "auto",
+    minWidth: "720px",
     border: "1px solid black",
     borderRadius: "12px",
     padding: "16px",
