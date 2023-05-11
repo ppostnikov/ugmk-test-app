@@ -17,6 +17,7 @@ const containerStyles = {
     flexDirection: "column",
     alignItems: "center",
     gap: "24px",
+    marginTop: "24px",
 }
 
 const View: FC<Props> = (props) => {
