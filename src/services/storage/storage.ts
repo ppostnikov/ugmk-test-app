@@ -1,4 +1,4 @@
-import {Product} from "../../modules/products/types/Product";
+import { Product } from "../../modules/products/types/Product";
 
 export interface IStorage {
     getData(key: string): Product[];

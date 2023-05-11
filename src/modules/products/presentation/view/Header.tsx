@@ -30,7 +30,14 @@ const Header: FC<Props> = (props) => {
             <select
                 onChange={changeProductFilter}
             >
-                {props.options?.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+                {props.options?.map(opt => (
+                    <option
+                        key={opt.value}
+                        value={opt.value}
+                    >
+                        {opt.label}
+                    </option>
+                ))}
             </select>
         </div>
     )

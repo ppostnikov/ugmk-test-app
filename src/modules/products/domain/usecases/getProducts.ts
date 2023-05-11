@@ -1,7 +1,7 @@
-import {Product} from "../../types/Product";
-import {ProductType} from "../../types/ProductType";
-import {ProductRepositoryImpl} from "../../data/repository";
-import {ProductModel} from "../models/ProductModel";
+import { Product } from "../../types/Product";
+import { ProductModel } from "../models/ProductModel";
+import { ProductType } from "../../types/ProductType";
+import { ProductRepositoryImpl } from "../../data/repository";
 
 export class GetProductsCase {
     constructor(private readonly repository: ProductRepositoryImpl) {}

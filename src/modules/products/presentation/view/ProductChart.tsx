@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { IChartData } from "../interfaces/IChartData";
 import Chart from "../../../../components/chart/Chart";
 import { MONTH_CATEGORIES } from "../../../../utility/constants";
-import {factoryIdToFactoryName} from "../../../../utility/factoryIdToFactoryName";
+import { factoryIdToFactoryName } from "../../../../utility/factoryIdToFactoryName";
 
 interface Props {
     data: IChartData;

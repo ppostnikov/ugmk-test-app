@@ -1,4 +1,4 @@
-export const factoryIdToFactoryName = (factoryId: number) => {
+export const factoryIdToFactoryName = (factoryId: number): string => {
     switch (factoryId) {
         case 1:
             return 'А';
