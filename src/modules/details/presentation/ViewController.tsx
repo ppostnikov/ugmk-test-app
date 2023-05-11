@@ -26,6 +26,7 @@ const ViewController: FC<Props> = ({ viewModel }) => {
             isLoading={viewModel.isLoading}
             factoryId={parseInt(factoryId)}
             monthNumber={parseInt(month)}
+            isDataValid={viewModel.getIsDataValid(parseInt(factoryId), parseInt(month))}
             chartData={getChartData(parseInt(factoryId), parseInt(month), viewModel.products)}
         />
     )

@@ -24,8 +24,18 @@ export class DetailsViewModel {
         return this._isLoading;
     }
 
+    getIsDataValid (factoryId: number, monthNumber: number): boolean {
+        return (
+            monthNumber !== -1
+            && monthNumber >= 1
+            && monthNumber <= 12
+            && factoryId !== -1
+            && (factoryId === 1 || factoryId === 2)
+        );
+    }
+
     async getDetails(factoryId: string, monthNumber: string) {
-        if (parseInt(monthNumber) !== -1 && parseInt(monthNumber) >= 1 && parseInt(monthNumber) <= 12 && parseInt(factoryId) !== -1) {
+        if (this.getIsDataValid(parseInt(factoryId), parseInt(monthNumber))) {
             this._isLoading = true;
 
             try {
