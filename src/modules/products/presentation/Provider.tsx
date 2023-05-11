@@ -10,7 +10,7 @@ import { GetProductsCase } from "../domain/usecases/getProducts";
 const api = new Api(Storage);
 const repository = new ProductRepositoryImpl(api);
 const getProductsCase = new GetProductsCase(repository);
-const viewModel = new ProductsViewModel({ getProductsCase });
+const viewModel = new ProductsViewModel({ getProductsCase }, Storage);
 
 const Provider: FC = () => {
     return (

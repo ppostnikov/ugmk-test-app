@@ -8,6 +8,8 @@ export interface IProductsApi {
     getFactoryDetails(id: string, month: string): Promise<Product[]>
 }
 
+const PRODUCTS_STORAGE_KEY = 'products';
+
 export class Api implements IProductsApi {
     constructor(private readonly storage: IStorage) {}
 
@@ -24,8 +26,7 @@ export class Api implements IProductsApi {
     }
 
     private async getData(): Promise<Product[]> {
-        const storageKey = 'products';
-        const storageProducts = this.storage.getData(storageKey);
+        const storageProducts = this.storage.getData(PRODUCTS_STORAGE_KEY);
         
         if (storageProducts) {
             return storageProducts;
@@ -33,7 +34,7 @@ export class Api implements IProductsApi {
             const response = await fetch('http://localhost:3001/products ', { method: 'GET',});
             const data = (await response.json())?.filter((product: ProductResponse) => product?.date !== null);
 
-            this.storage.setData(storageKey, data);
+            this.storage.setData(PRODUCTS_STORAGE_KEY, data);
 
             return data;
         }

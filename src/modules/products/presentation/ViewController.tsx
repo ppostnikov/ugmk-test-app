@@ -24,6 +24,7 @@ const ViewController: FC<Props> = ({ viewModel }) => {
     return (
         <View
             isLoading={viewModel.isLoading}
+            productType={viewModel.productType}
             data={getChartData(viewModel.products)}
             changeProductType={changeProductType}
         />

@@ -4,6 +4,7 @@ import { ProductType } from "../../types/ProductType";
 import { ProductOption } from "../../types/ProductOption";
 
 interface Props {
+    productType: ProductType;
     options: ProductOption[],
     onChangeFilter: (value: ProductType) => void,
 }
@@ -20,17 +21,20 @@ const headerStyles = {
 }
 
 const Header: FC<Props> = (props) => {
+    const { productType, options, onChangeFilter } = props;
+
     const changeProductFilter = (e: ChangeEvent<HTMLSelectElement>) => {
-        props.onChangeFilter(e.target.value as ProductType);
+        onChangeFilter(e.target.value as ProductType);
     }
 
     return (
         <div style={headerStyles as React.CSSProperties}>
             <div>Фильтр по типу продукции</div>
             <select
+                value={productType}
                 onChange={changeProductFilter}
             >
-                {props.options?.map(opt => (
+                {options?.map(opt => (
                     <option
                         key={opt.value}
                         value={opt.value}

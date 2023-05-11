@@ -1,16 +1,14 @@
-import { Product } from "../../modules/products/types/Product";
-
 export interface IStorage {
-    getData(key: string): Product[];
-    setData(key: string, data: Product[]): void;
+    getData(key: string): any;
+    setData(key: string, data: any): void;
 }
 
 export class LocalStorage implements IStorage {
-    setData(key: string, data: Product[]) {
+    setData(key: string, data: any) {
         localStorage[key] = JSON.stringify(data);
     }
 
-    getData(key: string): Product[] {
+    getData(key: string): any {
         return localStorage[key] ? JSON.parse(localStorage[key]) : undefined;
     }
 }

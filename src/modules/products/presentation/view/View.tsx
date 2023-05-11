@@ -9,6 +9,7 @@ import { ProductOption } from "../../types/ProductOption";
 interface Props {
     isLoading: boolean;
     data: IChartData;
+    productType: ProductType;
     changeProductType: (value: ProductType) => void,
 }
 
@@ -20,7 +21,7 @@ const containerStyles = {
 }
 
 const View: FC<Props> = (props) => {
-    const { isLoading, data, changeProductType } = props;
+    const { isLoading, data, productType, changeProductType } = props;
 
     const filterOptions: ProductOption[] = [
         { value: ProductType.ALL, label: 'Все продукты' },
@@ -31,6 +32,7 @@ const View: FC<Props> = (props) => {
     return (
         <div style={containerStyles as React.CSSProperties}>
             <Header
+                productType={productType}
                 options={filterOptions}
                 onChangeFilter={changeProductType}
             />

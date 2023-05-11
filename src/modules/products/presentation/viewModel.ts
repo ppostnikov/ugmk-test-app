@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
 import { ProductType } from "../types/ProductType";
+import { IStorage } from "../../../services/storage/storage";
 import { ProductModel } from "../domain/models/ProductModel";
 import { GetProductsCase } from "../domain/usecases/getProducts";
 
@@ -8,17 +9,25 @@ type UseCases = {
     getProductsCase: GetProductsCase;
 }
 
+const PRODUCTS_FILTER_STORAGE_KEY = 'products_filter';
+
 export class ProductsViewModel {
     private _products: ProductModel[] = [];
     private _isLoading: boolean = false;
     private _productType: ProductType = ProductType.ALL;
 
-    constructor(private readonly useCases: UseCases) {
+    constructor(private readonly useCases: UseCases, private readonly storage: IStorage) {
         makeAutoObservable(this);
+
+        this.initFilterValue();
     }
 
     get products() {
         return this._products;
+    }
+
+    get productType() {
+        return this._productType;
     }
 
     get isLoading() {
@@ -28,6 +37,7 @@ export class ProductsViewModel {
     async changeProductType(value: ProductType) {
         this._productType = value;
 
+        this.setFilterValue();
         await this.getProducts();
     }
 
@@ -40,6 +50,22 @@ export class ProductsViewModel {
             runInAction(() => this._products = response);
         } finally {
             runInAction(() => this._isLoading = false);
+        }
+    }
+
+    private setFilterValue() {
+        this.storage.setData(PRODUCTS_FILTER_STORAGE_KEY, this._productType);
+    }
+
+    private initFilterValue() {
+        const productType = this.storage.getData(PRODUCTS_FILTER_STORAGE_KEY) as ProductType;
+
+        if (productType && Object.values(ProductType).includes(productType)) {
+            this._productType = productType;
+        } else {
+            this._productType = ProductType.ALL;
+
+            this.setFilterValue();
         }
     }
 }
