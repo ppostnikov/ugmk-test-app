@@ -39,7 +39,7 @@ const DetailsChart: FC<Props> = (props) => {
                 },
                 {
                     name: 'Продукт 3',
-                    color: 'blue',
+                    color: 'brown',
                     y: data.product3,
                 },
             ],
@@ -49,7 +49,7 @@ const DetailsChart: FC<Props> = (props) => {
     return (
         <div style={chartStyles as React.CSSProperties}>
             {
-                data.product1 !== 0 || data.product2 !== 0
+                data.product1 !== 0 || data.product2 !== 0 || data.product3 !== 0
                     ? <Chart options={chartOptions}/>
                     : <h3>Нет данных</h3>
             }
