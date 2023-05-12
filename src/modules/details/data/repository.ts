@@ -1,6 +1,7 @@
-import { Api } from "../../../services/api/api";
+import { Api } from "src/services/api/api";
+import { APIError } from "src/utility/exceptions";
+
 import { Product } from "../../products/types/Product";
-import { APIError } from "../../../utility/exceptions";
 
 interface IDetailsRepository {
     getDetails(factoryId: string, monthNumber: string): Promise<Product[]>;

@@ -13,7 +13,7 @@ interface Props {
     changeProductType: (value: ProductType) => void,
 }
 
-const containerStyles = {
+const containerStyles: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -32,7 +32,7 @@ const View: FC<Props> = (props) => {
     ];
 
     return (
-        <div style={containerStyles as React.CSSProperties}>
+        <div style={containerStyles}>
             <Header
                 productType={productType}
                 options={filterOptions}

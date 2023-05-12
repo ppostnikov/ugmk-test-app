@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { FallbackProps } from "react-error-boundary";
 
-const containerStyles = {
+const containerStyles: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -14,7 +14,7 @@ const ErrorFallback: FC<FallbackProps> = ({ error })  => {
     };
 
     return (
-        <div role="alert" style={containerStyles as React.CSSProperties}>
+        <div role="alert" style={containerStyles}>
             <h1>Ошибка:</h1>
             <h2>{error?.message}</h2>
             <button onClick={reloadPage}>Обновить страницу</button>

@@ -8,7 +8,7 @@ interface Props {
     data: IChartData;
 }
 
-const chartStyles = {
+const chartStyles: React.CSSProperties = {
     display: "flex",
     justifyContent: "center",
     padding: "16px",
@@ -47,7 +47,7 @@ const DetailsChart: FC<Props> = (props) => {
     } as Highcharts.Options;
 
     return (
-        <div style={chartStyles as React.CSSProperties}>
+        <div style={chartStyles}>
             {
                 data.product1 !== 0 || data.product2 !== 0 || data.product3 !== 0
                     ? <Chart options={chartOptions}/>

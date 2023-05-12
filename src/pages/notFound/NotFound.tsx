@@ -1,6 +1,6 @@
 import React from "react";
 
-const containerStyles = {
+const containerStyles: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -9,7 +9,7 @@ const containerStyles = {
 
 const NotFound: React.FC = () => {
     return (
-        <div style={containerStyles as React.CSSProperties}>
+        <div style={containerStyles}>
             <h1>Ошибка 404</h1>
             <h2>Страница не найдена</h2>
         </div>

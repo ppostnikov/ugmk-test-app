@@ -27,7 +27,9 @@ export class GetProductsCase {
 
     private calculateProductValue (product: Product, type: ProductType): number | null {
         if (type === ProductType.ALL) {
-            return (product.product1 || 0) + (product.product2 || 0) + (product.product3 || 0);
+            const sum = (product.product1 || 0) + (product.product2 || 0) + (product.product3 || 0);
+
+            return sum === 0 ? sum : Math.floor(sum / 1000);
         }
 
         return product[type];

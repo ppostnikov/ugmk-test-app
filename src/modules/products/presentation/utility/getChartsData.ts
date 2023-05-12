@@ -1,5 +1,6 @@
+import { getMonthFromDate } from "src/utility/getMonthFromDate";
+
 import { IChartData } from "../interfaces/IChartData";
-import { getMonthFromDate } from "../../../../utility/getMonthFromDate";
 import { ProductModel } from "../../domain/models/ProductModel";
 
 export function getChartData (products: ProductModel[]): IChartData {

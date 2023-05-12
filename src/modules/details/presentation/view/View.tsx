@@ -12,7 +12,7 @@ interface Props {
     chartData: IChartData;
 }
 
-const containerStyles = {
+const containerStyles: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -20,7 +20,7 @@ const containerStyles = {
     marginTop: "24px",
 }
 
-const titleStyles = {
+const titleStyles: React.CSSProperties = {
     textAlign: "center",
 }
 
@@ -31,8 +31,8 @@ const View: FC<Props> = (props) => {
     const factory = factoryIdToFactoryName(factoryId);
 
     return (
-        <div style={containerStyles as React.CSSProperties}>
-            <h1 style={titleStyles as React.CSSProperties}>
+        <div style={containerStyles}>
+            <h1 style={titleStyles}>
                 {`Статистика по продукции фабрики ${factory} за ${month}`}
             </h1>
             { isLoading ? <h4>Loading...</h4> : <DetailsChart data={chartData} /> }

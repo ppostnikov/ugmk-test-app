@@ -2,16 +2,17 @@ import React, { FC } from "react";
 import Highcharts from 'highcharts';
 import { useNavigate } from 'react-router-dom';
 
+import Chart from "src/components/chart/Chart";
+import { MONTH_CATEGORIES } from "src/utility/constants";
+import { factoryIdToFactoryName } from "src/utility/factoryIdToFactoryName";
+
 import { IChartData } from "../interfaces/IChartData";
-import Chart from "../../../../components/chart/Chart";
-import { MONTH_CATEGORIES } from "../../../../utility/constants";
-import { factoryIdToFactoryName } from "../../../../utility/factoryIdToFactoryName";
 
 interface Props {
     data: IChartData;
 }
 
-const chartStyles = {
+const chartStyles: React.CSSProperties = {
     display: "flex",
     justifyContent: "center",
     border: "1px solid black",
@@ -65,7 +66,7 @@ const ProductChart: FC<Props> = (props) => {
     } as Highcharts.Options;
 
     return (
-        <div style={chartStyles as React.CSSProperties}>
+        <div style={chartStyles}>
             {
                 Object.values(data)?.length > 0
                     ? <Chart options={chartOptions}/>

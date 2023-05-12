@@ -1,6 +1,7 @@
+import { Api } from "src/services/api/api";
+import { APIError } from "src/utility/exceptions";
+
 import { Product } from "../types/Product";
-import { Api } from "../../../services/api/api";
-import { APIError } from "../../../utility/exceptions";
 
 interface IProductsRepository {
     getProducts(): Promise<Product[]>;

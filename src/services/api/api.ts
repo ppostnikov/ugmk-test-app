@@ -1,17 +1,16 @@
-import { IStorage } from "../storage/storage";
+import { Product } from "src/modules/products/types/Product";
+import { getMonthFromDate } from "src/utility/getMonthFromDate";
+import { IProductStorage } from "src/services/productStorage/productStorage";
+
 import { ProductResponse } from "./types/ProductResponse";
-import { Product } from "../../modules/products/types/Product";
-import { getMonthFromDate } from "../../utility/getMonthFromDate";
 
 export interface IProductsApi {
     getProducts(): Promise<Product[]>;
     getFactoryDetails(id: string, month: string): Promise<Product[]>
 }
 
-const PRODUCTS_STORAGE_KEY = 'products';
-
 export class Api implements IProductsApi {
-    constructor(private readonly storage: IStorage) {}
+    constructor(private readonly storage: IProductStorage) {}
 
     async getProducts() {
        return this.getData();
@@ -26,15 +25,15 @@ export class Api implements IProductsApi {
     }
 
     private async getData(): Promise<Product[]> {
-        const storageProducts = this.storage.getData(PRODUCTS_STORAGE_KEY);
+        const storageProducts = this.storage.getData();
         
-        if (storageProducts) {
+        if (storageProducts?.length) {
             return storageProducts;
         } else {
             const response = await fetch('http://localhost:3001/products ', { method: 'GET',});
             const data = (await response.json())?.filter((product: ProductResponse) => product?.date !== null);
 
-            this.storage.setData(PRODUCTS_STORAGE_KEY, data);
+            this.storage.setData(data);
 
             return data;
         }

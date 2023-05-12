@@ -1,13 +1,14 @@
 import { FC } from "react";
 
+import { Api } from "src/services/api/api";
+import { ProductStorage } from "src/services/productStorage/productStorage";
+
 import ViewController from "./ViewController";
-import { Api } from "../../../services/api/api";
 import { DetailsViewModel } from "./viewModel";
 import { DetailsRepositoryImpl } from "../data/repository";
-import { Storage } from "../../../services/storage/storage";
 import { GetDetailsCase } from "../domain/usecases/getDetails";
 
-const api = new Api(Storage);
+const api = new Api(ProductStorage);
 const repository = new DetailsRepositoryImpl(api);
 const getDetailsCase = new GetDetailsCase(repository);
 const viewModel = new DetailsViewModel({ getDetailsCase });

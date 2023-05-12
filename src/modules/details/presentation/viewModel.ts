@@ -1,7 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
+import { ValidationError } from "src/utility/exceptions";
+
 import { Product } from "../../products/types/Product";
-import { ValidationError } from "../../../utility/exceptions";
 import { GetDetailsCase } from "../domain/usecases/getDetails";
 
 type UseCases = {

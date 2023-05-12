@@ -9,7 +9,7 @@ interface Props {
     onChangeFilter: (value: ProductType) => void,
 }
 
-const headerStyles = {
+const headerStyles: React.CSSProperties = {
     width: "auto",
     minWidth: "720px",
     border: "1px solid black",
@@ -28,7 +28,7 @@ const Header: FC<Props> = (props) => {
     }
 
     return (
-        <div style={headerStyles as React.CSSProperties}>
+        <div style={headerStyles}>
             <div>Фильтр по типу продукции</div>
             <select
                 value={productType}
