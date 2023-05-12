@@ -66,7 +66,11 @@ const ProductChart: FC<Props> = (props) => {
 
     return (
         <div style={chartStyles as React.CSSProperties}>
-            <Chart options={chartOptions}/>
+            {
+                Object.values(data)?.length > 0
+                    ? <Chart options={chartOptions}/>
+                    : <h3>Нет данных</h3>
+            }
         </div>
     )
 }

@@ -28,6 +28,7 @@ const View: FC<Props> = (props) => {
         { value: ProductType.ALL, label: 'Все продукты' },
         { value: ProductType.PRODUCT_1, label: 'Продукт 1' },
         { value: ProductType.PRODUCT_2, label: 'Продукт 2' },
+        { value: ProductType.PRODUCT_3, label: 'Продукт 3' },
     ];
 
     return (

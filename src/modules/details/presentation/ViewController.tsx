@@ -1,6 +1,7 @@
 import { FC, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
+import { useErrorBoundary } from 'react-error-boundary';
 
 import View from "./view/View";
 import { DetailsViewModel } from "./viewModel";
@@ -11,12 +12,17 @@ interface Props {
 }
 
 const ViewController: FC<Props> = ({ viewModel }) => {
+    const { showBoundary } = useErrorBoundary();
     const { factoryId = '-1', month = '-1' } = useParams();
 
     useEffect( () => {
         (async () => {
-            if (factoryId && month) {
-                await viewModel.getDetails(factoryId, month);
+            try {
+                if (factoryId && month) {
+                    await viewModel.getDetails(factoryId, month);
+                }
+            } catch (error) {
+                showBoundary(error);
             }
         })();
     }, []);
@@ -26,7 +32,6 @@ const ViewController: FC<Props> = ({ viewModel }) => {
             isLoading={viewModel.isLoading}
             factoryId={parseInt(factoryId)}
             monthNumber={parseInt(month)}
-            isDataValid={viewModel.getIsDataValid(parseInt(factoryId), parseInt(month))}
             chartData={getChartData(parseInt(factoryId), parseInt(month), viewModel.products)}
         />
     )

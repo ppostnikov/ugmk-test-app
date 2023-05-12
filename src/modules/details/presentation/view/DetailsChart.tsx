@@ -37,13 +37,22 @@ const DetailsChart: FC<Props> = (props) => {
                     color: 'orange',
                     y: data.product2,
                 },
+                {
+                    name: 'Продукт 3',
+                    color: 'blue',
+                    y: data.product3,
+                },
             ],
         }],
     } as Highcharts.Options;
 
     return (
         <div style={chartStyles as React.CSSProperties}>
-            <Chart options={chartOptions}/>
+            {
+                data.product1 !== 0 || data.product2 !== 0
+                    ? <Chart options={chartOptions}/>
+                    : <h3>Нет данных</h3>
+            }
         </div>
     )
 }

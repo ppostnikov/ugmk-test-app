@@ -27,7 +27,7 @@ export class GetProductsCase {
 
     private calculateProductValue (product: Product, type: ProductType): number | null {
         if (type === ProductType.ALL) {
-            return (product.product1 || 0) + (product.product2 || 0);
+            return (product.product1 || 0) + (product.product2 || 0) + (product.product3 || 0);
         }
 
         return product[type];

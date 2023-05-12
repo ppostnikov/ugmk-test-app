@@ -1,5 +1,6 @@
 import { FC, useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import { useErrorBoundary } from 'react-error-boundary';
 
 import View from "./view/View";
 import { ProductsViewModel } from "./viewModel";
@@ -11,9 +12,15 @@ interface Props {
 }
 
 const ViewController: FC<Props> = ({ viewModel }) => {
+    const { showBoundary } = useErrorBoundary();
+
     useEffect( () => {
         (async () => {
-            await viewModel.getProducts();
+            try {
+                await viewModel.getProducts();
+            } catch (error) {
+                showBoundary(error);
+            }
         })();
     }, []);
 

@@ -24,16 +24,6 @@ export class DetailsViewModel {
         return this._isLoading;
     }
 
-    getIsDataValid (factoryId: number, monthNumber: number): boolean {
-        return (
-            monthNumber !== -1
-            && monthNumber >= 1
-            && monthNumber <= 12
-            && factoryId !== -1
-            && (factoryId === 1 || factoryId === 2)
-        );
-    }
-
     async getDetails(factoryId: string, monthNumber: string) {
         if (this.getIsDataValid(parseInt(factoryId), parseInt(monthNumber))) {
             this._isLoading = true;
@@ -46,7 +36,17 @@ export class DetailsViewModel {
                 runInAction(() => this._isLoading = false);
             }
         } else {
-            throw new ValidationError('Id фабрики или номер месяца не верны.');
+            throw new ValidationError('Неверный Id фабрики или номер месяца.');
         }
+    }
+
+    private getIsDataValid (factoryId: number, monthNumber: number): boolean {
+        return (
+            monthNumber !== -1
+            && monthNumber >= 1
+            && monthNumber <= 12
+            && factoryId !== -1
+            && (factoryId === 1 || factoryId === 2)
+        );
     }
 }
