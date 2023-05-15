@@ -31,7 +31,7 @@ export class Api implements IProductsApi {
             return storageProducts;
         } else {
             const response = await fetch('http://localhost:3001/products ', { method: 'GET',});
-            const data = (await response.json())?.filter((product: ProductResponse) => product?.date !== null);
+            const data = (await response.json())?.filter((product: ProductResponse) => product?.date);
 
             this.storage.setData(data);
 

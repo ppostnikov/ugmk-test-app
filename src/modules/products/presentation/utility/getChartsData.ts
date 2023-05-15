@@ -7,7 +7,7 @@ export function getChartData (products: ProductModel[]): IChartData {
     const chartData: IChartData = {};
 
     products?.forEach(product => {
-        if (product.date !== null && product.factory_id !== null && product.value !== null) {
+        if (product.date && product.factory_id && product.value) {
             if (!chartData[product.factory_id]) {
                 chartData[product.factory_id] = (new Array(12)).fill(0);
             }
