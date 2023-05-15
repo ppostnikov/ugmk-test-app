@@ -1,3 +1,5 @@
+import mapValues from 'lodash/mapValues';
+import { formatWeight } from "src/utility/formatWeight";
 import { getMonthFromDate } from "src/utility/getMonthFromDate";
 
 import { IChartData } from "../interfaces/IChartData";
@@ -18,5 +20,5 @@ export function getChartData (products: ProductModel[]): IChartData {
         }
     });
 
-    return chartData;
+    return mapValues(chartData, factoryValue => factoryValue.map(product => formatWeight(product)));
 }

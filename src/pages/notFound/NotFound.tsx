@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 const containerStyles: React.CSSProperties = {
     display: "flex",
@@ -7,7 +7,7 @@ const containerStyles: React.CSSProperties = {
     marginTop: "20%",
 }
 
-const NotFound: React.FC = () => {
+const NotFound: FC = () => {
     return (
         <div style={containerStyles}>
             <h1>Ошибка 404</h1>

@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 import Highcharts from 'highcharts';
 
+import Chart from "src/components/chart/Chart";
+
 import { IChartData } from "../interfaces/IChartData";
-import Chart from "../../../../components/chart/Chart";
 
 interface Props {
     data: IChartData;

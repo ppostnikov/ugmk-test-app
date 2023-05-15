@@ -1,7 +1,8 @@
+import { formatWeight } from "src/utility/formatWeight";
 import { MONTH_CATEGORIES } from "src/utility/constants";
+import { Product } from "src/modules/products/types/Product";
 
 import { IChartData } from "../interfaces/IChartData";
-import { Product } from "../../../products/types/Product";
 
 export function getChartData (factoryId: number, monthNumber: number, products: Product[]): IChartData {
     const chartData: IChartData = {
@@ -21,8 +22,8 @@ export function getChartData (factoryId: number, monthNumber: number, products: 
 
     return {
         ...chartData,
-        product1: chartData.product1 === 0 ? chartData.product1 : Math.floor(chartData.product1 / 1000),
-        product2: chartData.product2 === 0 ? chartData.product2 : Math.floor(chartData.product2 / 1000),
-        product3: chartData.product3 === 0 ? chartData.product3 : Math.floor(chartData.product3 / 1000),
+        product1: formatWeight(chartData.product1),
+        product2: formatWeight(chartData.product2),
+        product3: formatWeight(chartData.product3),
     };
 }

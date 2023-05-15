@@ -4,6 +4,9 @@ import merge from "lodash/merge";
 import HighchartsReact from "highcharts-react-official";
 
 const baseOptions = {
+    accessibility: {
+        enabled: false,
+    },
     title: {
         text: '',
     },

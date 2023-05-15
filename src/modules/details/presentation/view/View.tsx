@@ -1,9 +1,10 @@
 import React, { FC } from "react";
 
+import { MONTH_CATEGORIES } from "src/utility/constants";
+import { factoryIdToFactoryName } from "src/utility/factoryIdToFactoryName";
+
 import DetailsChart from "./DetailsChart";
 import { IChartData } from "../interfaces/IChartData";
-import { MONTH_CATEGORIES } from "../../../../utility/constants";
-import { factoryIdToFactoryName } from "../../../../utility/factoryIdToFactoryName";
 
 interface Props {
     isLoading: boolean;

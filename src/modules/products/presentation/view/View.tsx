@@ -40,7 +40,7 @@ const View: FC<Props> = (props) => {
             />
             {
                 isLoading
-                    ? <h4>Loading...</h4>
+                    ? <h4>Загрузка...</h4>
                     :  <ProductChart data={data} />
             }
         </div>

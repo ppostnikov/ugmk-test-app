@@ -1,7 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
+import { IStorage } from "src/services/storage/storage";
+
 import { ProductType } from "../types/ProductType";
-import { IStorage } from "../../../services/storage/storage";
 import { ProductModel } from "../domain/models/ProductModel";
 import { GetProductsCase } from "../domain/usecases/getProducts";
 

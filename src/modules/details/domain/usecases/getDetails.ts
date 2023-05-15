@@ -1,4 +1,5 @@
-import { Product } from "../../../products/types/Product";
+import { Product } from "src/modules/products/types/Product";
+
 import { DetailsRepositoryImpl } from "../../data/repository";
 
 export class GetDetailsCase {
